@@ -292,7 +292,7 @@ function __createDashBoard()
     <>
       <div className="content">
 
-                 <div className="gNodebeEsources">
+                 <div className="gNodebeResources">
          <Container>
             <Row xs={3}>
             {[...Array(resources.length)].map((e, i) => {
