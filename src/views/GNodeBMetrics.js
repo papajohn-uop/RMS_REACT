@@ -349,7 +349,7 @@ import axios from 'axios'
 
 
 
-const LocalMetrics=()=> {
+const GNodeBMetrics=()=> {
   
   const [posts, setPosts]=useState([])
 
@@ -392,4 +392,4 @@ useEffect(()=>{
 );
 }
 
-export default LocalMetrics;
+export default GNodeBMetrics;
