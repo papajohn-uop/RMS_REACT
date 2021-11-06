@@ -346,12 +346,135 @@ export default LocalMetrics;*/
 
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
+// react plugin used to create charts
+import { Line, Pie } from "react-chartjs-2";
+// reactstrap components
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  CardTitle,
+  CardText,
+  CardSubtitle,
+  CardImg,
+  Row,
+  Col,
+  Container,
+  Button,
+} from "reactstrap";
 
+import GaugeChart from 'react-gauge-chart'
 
 
 const GNodeBMetrics=()=> {
+
   
+
+  function __createDL_BitrateCard(dl_bitrate)
+  {
+    return(
+      <Col lg="3" md="6" sm="6">
+      <Card className="card-stats">
+      <CardBody>
+        <Row>
+          <Col md="8" xs="7">
+            <div className="numbers">
+              <p className="card-category">Downlink Speed</p>
+              <CardTitle tag="p">{dl_bitrate}</CardTitle>
+              <p />
+            </div>
+          </Col>
+        </Row>
+      </CardBody>
+      <CardFooter>
+        <hr />
+        <div className="stats">
+           Mbps
+        </div>
+      </CardFooter>
+    </Card>
+    </Col>
+    )
+  }
+
+
+  function __createUL_BitrateCard(ul_bitrate)
+  {
+    return(
+      <Col lg="3" md="6" sm="6">
+      <Card className="card-stats">
+      <CardBody>
+        <Row>
+          <Col md="8" xs="7">
+            <div className="numbers">
+              <p className="card-category">Uplink Speed</p>
+              <CardTitle tag="p">{ul_bitrate}</CardTitle>
+              <p />
+            </div>
+          </Col>
+        </Row>
+      </CardBody>
+      <CardFooter>
+        <hr />
+        <div className="stats">
+           Mbps
+        </div>
+      </CardFooter>
+    </Card>
+    </Col>
+    )
+  }
+
+
+ 
+
+
+//one row
+function __createCharts(data)
+{
+  return(
+    <Container>
+    <Row xs={3}>
+    {/* {[...Array(3)].map((e, i) => {
+        return ( */}
+          <Col>
+                 <Card className="card-stats">
+      <CardBody>
+        <Row>
+          <Col md="8" xs="7">
+            <div className="numbers">
+              <p className="card-category">Uplink Speed</p>
+              <CardTitle tag="p">{data[0]}</CardTitle>
+              <p />
+            </div>
+          </Col>
+        </Row>
+      </CardBody>
+      <CardFooter>
+        <hr />
+        <div className="stats">
+           Mbps
+        </div>
+      </CardFooter>
+    </Card>
+          </Col>
+          {__createDL_BitrateCard(data[1])}
+          {__createUL_BitrateCard(data[2])}
+        {/* ) */}
+    {/* })} */}
+    </Row>
+</Container>
+
+
+
+
+  )
+}
+
+
   const [posts, setPosts]=useState([])
+  const [all_posts, setAllPosts]=useState([])
 
   const getPosts = async () => {
   try {
@@ -363,6 +486,7 @@ const GNodeBMetrics=()=> {
     console.log(userPosts.data["data"][0][2])
 
     setPosts(userPosts.data["data"][0]);  // set State
+    setAllPosts(userPosts.data["data"]);  // set State
 
   } catch (err) {
     console.error(err.message);
@@ -388,6 +512,10 @@ useEffect(()=>{
        <li key={post.id}>{posts[0]},{posts[1]},{posts[2]}</li>
      ))}
    </ul>
+   {__createDL_BitrateCard(posts[1])}
+   {__createUL_BitrateCard(posts[2])}
+   {__createCharts(posts)}   
+
   </div>
 );
 }
