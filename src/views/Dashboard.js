@@ -321,15 +321,7 @@ function __createDashBoard()
         </Container>
     </div>  
 
-        <Row>
-            {__createCapacityCard()}
-            {__createRevenueCard()}
-            {__createErrorsCard()}
-            {__createFollowerCard()}
-        </Row>
-        {__createChart()}
-        {__createCharts()}
-      </div>
+   </div>
     </>
   );
 }
