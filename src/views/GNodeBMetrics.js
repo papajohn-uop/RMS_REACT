@@ -164,7 +164,7 @@ useEffect(()=>{
 
   var interval=setInterval(()=>{
     getBitrate()
-   },1000)
+   },3000)
      
      
    return()=>clearInterval(interval)
@@ -216,7 +216,7 @@ getTransmissionData()
 //Lets make sure we get this data periodically (Every 3 seconds)
 var interval=setInterval(()=>{
   getTransmissionData()
- },1000)
+ },3000)
      
  return()=>clearInterval(interval)
 

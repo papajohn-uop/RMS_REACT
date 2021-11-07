@@ -16,7 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React , {useState} from "react";
 // react plugin used to create charts
 import { Line, Pie } from "react-chartjs-2";
 // reactstrap components
@@ -42,7 +42,9 @@ import {
 } from "variables/charts.js";
 
 
-import resources from "resources.js";
+
+
+import axios from 'axios'
 
 
 function __createLineChart()
@@ -153,8 +155,9 @@ function __createPieChart()
 
 
 
-function __createDashBoard()
+function __createDashBoard(resources)
 {
+
   return (
     <>
       <div className="content">
@@ -193,9 +196,27 @@ function __createDashBoard()
   );
 }
 
+
+
+
 function Dashboard() {
+//Get all gNodeBs from Server
+const [gnb_resources, setResources]=useState([])
+const getGnodeBs = async () => {
+  try {
+    const myresources = await axios.get("http://172.16.10.37:18080/resource")
+
+    setResources(myresources.data[0])
+
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
+  getGnodeBs()
   return(
-  __createDashBoard()
+    
+  __createDashBoard(gnb_resources)
   )
 }
 
