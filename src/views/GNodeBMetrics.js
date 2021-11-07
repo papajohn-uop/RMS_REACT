@@ -148,7 +148,7 @@ function __createCharts(data)
   const [posts, setPosts]=useState([])
   const [all_posts, setAllPosts]=useState([])
 
-  const getPosts = async () => {
+  const getBitrate = async () => {
   try {
 //    const userPosts = await axios.get("https://jsonplaceholder.typicode.com/posts")
     const userPosts = await axios.get("http://172.16.10.203:19999/api/v1/data?chart=info_cell.cell_1_bitrate")
@@ -171,10 +171,10 @@ function __createCharts(data)
 
 useEffect(()=>{
     
-  getPosts()
+  getBitrate()
 
   var interval=setInterval(()=>{
-    getPosts()
+    getBitrate()
    },run_every_seconds)
      
      
