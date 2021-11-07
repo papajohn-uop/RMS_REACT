@@ -38,8 +38,8 @@ import {
   Button,
 } from "reactstrap";
 
-import GaugeChart from 'react-gauge-chart'
 
+var run_every_seconds=3000
 
 const GNodeBMetrics=()=> {
 
@@ -54,7 +54,7 @@ const GNodeBMetrics=()=> {
                               <CardSubtitle tag="h6" className="mb-2 text-muted">{new Date().toLocaleDateString("el-GR")}</CardSubtitle>
                               <CardText>{new Date().toLocaleTimeString("el-GR")}</CardText>
               
-                              <Button>Button</Button>
+                              <Button  onClick={function(){run_every_seconds=run_every_seconds+1000}}>Button</Button>
                           </CardBody>
       <CardFooter>
         <hr />
@@ -152,11 +152,12 @@ function __createCharts(data)
   try {
 //    const userPosts = await axios.get("https://jsonplaceholder.typicode.com/posts")
     const userPosts = await axios.get("http://172.16.10.203:19999/api/v1/data?chart=info_cell.cell_1_bitrate")
-
+ 
+    console.log(new Date().toLocaleTimeString("el-GR"))
     console.log(userPosts.data["data"][0][0])
     console.log(userPosts.data["data"][0][1])
     console.log(userPosts.data["data"][0][2])
-
+    console.log(run_every_seconds)
     setPosts(userPosts.data["data"][0]);  // set State
     setAllPosts(userPosts.data["data"]);  // set State
 
@@ -165,23 +166,38 @@ function __createCharts(data)
   }
 };
 
+
+
+
 useEffect(()=>{
     
-  getPosts()},[])  // includes empty dependency array
+  getPosts()
 
-
-  const interval=setInterval(()=>{
+  var interval=setInterval(()=>{
     getPosts()
-   },3000)
+   },run_every_seconds)
+     
+     
+   return()=>clearInterval(interval)
+
+
+
+},[])  // includes empty dependency array
+
+
+
+
+
+
+
 
   return (
     <>
-    <div></div>
+    <div>TTTT</div>
   <div>
     <br></br>
   
    {__createCharts(posts)}   
-   {console.log(new Date(1504095567183).toLocaleTimeString("en-US"))}
   </div>
   </> 
 );
