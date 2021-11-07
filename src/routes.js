@@ -36,13 +36,6 @@ var routes = [
     layout: "/admin",
   },
   {
-    path: "/localMetrics",
-    name: "local Metrics",
-    icon: "nc-icon nc-pin-3",
-    component: Maps,
-    layout: "/admin",
-  },
-  {
     path: "/gNodeBMetrics",
     name: "gNodeB Metrics",
     icon: "nc-icon nc-pin-3",
