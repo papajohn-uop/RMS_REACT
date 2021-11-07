@@ -246,12 +246,13 @@ function __createTransmissionCharts()
 
   return (
     <>
+     <div className="content">
 
-  <div>
     <br></br>
   
    {__createBitrateCharts(bitrate)}   
    {__createTransmissionCharts()}   
+ 
   </div>
   </> 
 );
