@@ -19,6 +19,7 @@
 import Dashboard from "views/Dashboard.js";
 import Maps from "views/Map.js";
 import GNodeBMetrics from "views/GNodeBMetrics"; 
+import GNodeBs from "views/GNodeBs"; 
 
 var routes = [
   {
@@ -33,6 +34,13 @@ var routes = [
     name: "Maps",
     icon: "nc-icon nc-pin-3",
     component: Maps,
+    layout: "/admin",
+  },
+  {
+    path: "/gNodeBs",
+    name: "gNodeBs",
+    icon: "nc-icon nc-pin-3",
+    component: GNodeBs,
     layout: "/admin",
   },
   {
