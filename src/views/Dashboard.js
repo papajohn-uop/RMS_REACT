@@ -310,8 +310,8 @@ const [gnb_resources, setResources]=useState([])
 const getGnodeBs = async () => {
   try {
     const myresources = await axios.get("http://172.16.10.37:18080/resource")
-
-    setResources(myresources.data[0])
+    console.log("DD")
+    setResources(myresources.data)
 
   } catch (err) {
     console.error(err.message);
