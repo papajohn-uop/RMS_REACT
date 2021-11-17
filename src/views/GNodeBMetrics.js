@@ -21,17 +21,17 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 // react plugin used to create charts
-import { Line, Pie } from "react-chartjs-2";
+//import { Line, Pie } from "react-chartjs-2";
 // reactstrap components
 import {
   Card,
-  CardHeader,
+  //CardHeader,
   CardBody,
   CardFooter,
   CardTitle,
   CardText,
   CardSubtitle,
-  CardImg,
+  //CardImg,
   Row,
   Col,
   Container,
@@ -136,7 +136,7 @@ function __createBitrateCharts(data)
 /******************************BITRATE**************************** */
 
   const [bitrate, setLastBitrate]=useState([])
-  const [all_posts, setAllBitrates]=useState([])
+//  const [all_posts, setAllBitrates]=useState([])
 
   const getBitrate = async () => {
   try {
@@ -148,7 +148,7 @@ function __createBitrateCharts(data)
     console.log(bitrates.data["data"][0][2])
     console.log(run_every_seconds)
     setLastBitrate(bitrates.data["data"][0]);  // set State
-    setAllBitrates(bitrates.data["data"]);  // set State
+  //  setAllBitrates(bitrates.data["data"]);  // set State
 
   } catch (err) {
     console.error(err.message);

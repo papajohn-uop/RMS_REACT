@@ -21,13 +21,13 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 // react plugin used to create charts
-import { Line, Pie } from "react-chartjs-2";
+//import { Line, Pie } from "react-chartjs-2";
 // reactstrap components
 import {
   Card,
-  CardHeader,
+ // CardHeader,
   CardBody,
-  CardFooter,
+//  CardFooter,
   CardTitle,
   CardText,
   CardSubtitle,
@@ -80,7 +80,7 @@ function __createDashBoard(resources)
   //We will keep the selected resource with useState 
 //and show it to the bottom card
   const [selected_resource, setSelection]=useState([])
-  if (selected_resource.length == 0)
+  if (selected_resource.length === 0)
   {
  //   console.log("START")
   return (
